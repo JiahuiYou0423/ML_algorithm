@@ -30,8 +30,8 @@ class LinearRegression:
 
     def gradient_descent(self, alpha, num_iteration):
         cost_history = []
-        for i in range(num_iteration):
-            self.gradient_descent(alpha)
+        for _ in range(num_iteration):
+            self.gradient_step(alpha)
             cost_history.append(self.cost_function(self.data, self.labels))
         return cost_history
 
@@ -47,7 +47,7 @@ class LinearRegression:
     def cost_function(self, data, labels):
         num_example = data.shape[0]
         delta = LinearRegression.hypothesis(self.data, self.theta)- labels
-        cost = (1/2) * np.dot(delta.T, delta)
+        cost = (1/2) * np.dot(delta.T, delta)/num_example
         return cost[0][0]
 
     @staticmethod
@@ -62,3 +62,4 @@ class LinearRegression:
     def predict(self, data):
         data_processed = prepare_for_training(data, self.polynomial_degree, self.sinusoid_degree, self.normalize_data)[0]
         predictions = LinearRegression.hypothesis(data_processed, self.theta)
+        return predictions
