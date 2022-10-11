@@ -13,7 +13,7 @@ class LinearRegression:
         :param sinusoid_degree:
         :param normalize_data:
         """
-        (data_processed, features_mean, features_deviation)=prepare_for_training(data, polynomial_degree=0, sinusoid_degree=0,normalize_data=True)
+        (data_processed, features_mean, features_deviation)=prepare_for_training(data, polynomial_degree, sinusoid_degree,normalize_data=True)
         self.data = data_processed
         self.labels = labels
         self.features_mean = features_mean
